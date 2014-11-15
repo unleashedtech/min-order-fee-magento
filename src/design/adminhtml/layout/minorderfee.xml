@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Minimum Order Fee extension
+*
+* NOTICE OF LICENSE
+*
+* This extension is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This extension is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this file.  If not, see <http://www.gnu.org/licenses/>.
+*
+* @category    UnleashedTech_MinOrderFee
+* @package     UnleashedTech_MinOrderFee
+* @copyright   Copyright (c) 2014 Unleashed Technologies, LLC. (http://www.unleashed-technologies.com)
+* @license     https://www.gnu.org/licenses/gpl-3.0.txt
+*/
+-->
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="order_totals">
+            <block type="minorderfee/adminhtml_sales_order_total" name="min_order_fee"/>
+        </reference>
+    </adminhtml_sales_order_view>
+    <adminhtml_sales_order_invoice_new>
+        <reference name="invoice_totals">
+            <block type="minorderfee/adminhtml_sales_order_total" name="min_order_fee"/>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+    <adminhtml_sales_order_invoice_updateqty>
+        <reference name="invoice_totals">
+            <block type="minorderfee/adminhtml_sales_order_total" name="min_order_fee"/>
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+    <adminhtml_sales_order_invoice_view>
+        <reference name="invoice_totals">
+            <block type="minorderfee/adminhtml_sales_order_total" name="min_order_fee"/>
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="adjustments">
+            <action method="setTemplate">
+                <template>minorderfee/sales/order/creditmemo/create/totals/adjustments.phtml</template>
+            </action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="adjustments">
+            <action method="setTemplate">
+                <template>minorderfee/sales/order/creditmemo/create/totals/adjustments.phtml</template>
+            </action>
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="creditmemo_totals">
+            <block type="minorderfee/adminhtml_sales_order_total" name="min_order_fee"/>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+</layout>

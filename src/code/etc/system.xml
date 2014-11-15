@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Minimum Order Fee extension
+*
+* NOTICE OF LICENSE
+*
+* This extension is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This extension is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this file.  If not, see <http://www.gnu.org/licenses/>.
+*
+* @category    UnleashedTech_MinOrderFee
+* @package     UnleashedTech_MinOrderFee
+* @copyright   Copyright (c) 2014 Unleashed Technologies, LLC. (http://www.unleashed-technologies.com)
+* @license     https://www.gnu.org/licenses/gpl-3.0.txt
+*/
+-->
+<config>
+    <sections>
+        <sales>
+            <groups>
+                <minimum_order>
+                    <fields>
+                        <allow_with_fee translate="label" module="minorderfee">
+                            <label>Allow smaller orders, but charge a fee</label>
+                            <comment>Orders below the minimum amount will be assessed an additional fee.</comment>
+                            <sort_order>11</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><active>1</active></depends>
+                        </allow_with_fee>
+                        <small_order_fee translate="label" module="minorderfee">
+                            <label>Small order fee</label>
+                            <comment>Additional amount to charge the customer.</comment>
+                            <sort_order>12</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><active>1</active><allow_with_fee>1</allow_with_fee></depends>
+                        </small_order_fee>
+                        <small_order_fee_label translate="label" module="minorderfee">
+                            <label>Small order fee label</label>
+                            <comment>Customize the name of this fee, as shown to the customer</comment>
+                            <sort_order>13</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><active>1</active><allow_with_fee>1</allow_with_fee></depends>
+                        </small_order_fee_label>
+                        <small_order_fee_exclusion_behavior translate="label" module="minorderfee">
+                            <label>Small order fee behavior</label>
+                            <sort_order>14</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>minorderfee/adminhtml_system_config_source_behavior</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends>
+                                <active>1</active>
+                                <allow_with_fee>1</allow_with_fee>
+                            </depends>
+                        </small_order_fee_exclusion_behavior>
+                    </fields>
+                </minimum_order>
+            </groups>
+        </sales>
+    </sections>
+</config>

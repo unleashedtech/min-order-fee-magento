@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <UnleashedTech_MinOrderFee>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Adminhtml />
+                <Mage_Sales />
+            </depends>
+        </UnleashedTech_MinOrderFee>
+    </modules>
+</config>

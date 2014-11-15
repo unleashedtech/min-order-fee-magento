@@ -1,0 +1,27 @@
+{
+    "name": "unleashedtech/min-order-fee-magento",
+    "type": "magento-module",
+    "license": "GPL-3.0",
+    "homepage": "http://gitlab.utdev.com/magento-modules/min-order-fee/tree/master",
+    "description": "Charge customers a fee for small orders",
+    "keywords": ["magento", "sales"],
+    "authors": [
+        {
+            "name": "Colin O'Dell",
+            "email": "codell@unleashed-technologies.com",
+            "homepage": "http://www.colinodell.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Unleashed Technologies",
+            "homepage": "http://www.unleashed-technologies.com"
+        }
+    ],
+    "require-dev": {
+        "phing/phing": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "Enables automatic installation into your Magento site"
+    }
+}

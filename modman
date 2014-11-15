@@ -1,0 +1,5 @@
+src/code                                    app/code/community/UnleashedTech/MinOrderFee/
+src/design/adminhtml/layout/minorderfee.xml app/design/adminhtml/default/default/layout/minorderfee.xml
+src/design/adminhtml/template               app/design/adminhtml/default/default/template/minorderfee/
+src/UnleashedTech_MinOrderFee.xml           app/etc/modules/UnleashedTech_MinOrderFee.xml
+

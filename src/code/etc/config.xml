@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Minimum Order Fee extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This extension is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This extension is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this file.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @category    UnleashedTech_MinOrderFee
+ * @package     UnleashedTech_MinOrderFee
+ * @copyright   Copyright (c) 2014 Unleashed Technologies, LLC. (http://www.unleashed-technologies.com)
+ * @license     https://www.gnu.org/licenses/gpl-3.0.txt
+ */
+ -->
+<config>
+    <modules>
+        <UnleashedTech_MinOrderFee>
+            <version>1.1.1</version>
+        </UnleashedTech_MinOrderFee>
+    </modules>
+    <global>
+        <blocks>
+            <minorderfee>
+                <class>UnleashedTech_MinOrderFee_Block</class>
+            </minorderfee>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_creditmemo_create_adjustments>UnleashedTech_MinOrderFee_Block_Adminhtml_Sales_Order_Creditmemo_Create_Adjustments</sales_order_creditmemo_create_adjustments>
+                </rewrite>
+            </adminhtml>
+            <sales>
+                <rewrite>
+                    <order_totals>UnleashedTech_MinOrderFee_Block_Sales_Order_Totals</order_totals>
+                    <order_invoice_totals>UnleashedTech_MinOrderFee_Block_Sales_Order_Invoice_Totals</order_invoice_totals>
+                    <order_creditmemo_totals>UnleashedTech_MinOrderFee_Block_Sales_Order_Creditmemo_Totals</order_creditmemo_totals>
+                </rewrite>
+            </sales>
+        </blocks>
+        <helpers>
+            <minorderfee>
+                <class>UnleashedTech_MinOrderFee_Helper</class>
+            </minorderfee>
+        </helpers>
+        <models>
+            <minorderfee>
+                <class>UnleashedTech_MinOrderFee_Model</class>
+            </minorderfee>
+            <sales>
+                <rewrite>
+                    <quote_address>UnleashedTech_MinOrderFee_Model_Sales_Quote_Address</quote_address>
+                    <service_order>UnleashedTech_MinOrderFee_Model_Sales_Service_Order</service_order>
+                </rewrite>
+            </sales>
+        </models>
+        <resources>
+            <minorderfee_setup>
+                <setup>
+                    <module>UnleashedTech_MinOrderFee</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </minorderfee_setup>
+        </resources>
+        <sales>
+            <quote>
+                <totals>
+                    <min_order_fee>
+                        <class>minorderfee/minorderfee</class>
+                        <after>subtotal,freeshipping,tax_subtotal</after>
+                        <before>grand_total</before>
+                    </min_order_fee>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <min_order_fee>
+                        <class>minorderfee/invoice</class>
+                        <after>subtotal,freeshipping,tax_subtotal</after>
+                        <before>grand_total</before>
+                    </min_order_fee>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                <totals>
+                    <min_order_fee>
+                        <class>minorderfee/creditmemo</class>
+                        <after>subtotal,freeshipping,tax_subtotal</after>
+                        <before>grand_total</before>
+                    </min_order_fee>
+                </totals>
+            </order_creditmemo>
+        </sales>
+        <fieldsets>
+            <sales_convert_quote_address>
+                <min_order_fee_amount>
+                    <to_order>*</to_order>
+                </min_order_fee_amount>
+                <base_min_order_fee_amount>
+                    <to_order>*</to_order>
+                </base_min_order_fee_amount>
+            </sales_convert_quote_address>
+            <sales_convert_order>
+                <min_order_fee_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_creditmemo>*</to_creditmemo>
+                </min_order_fee_amount>
+                <base_min_order_fee_amount>
+                    <to_invoice>*</to_invoice>
+                    <to_creditmemo>*</to_creditmemo>
+                </base_min_order_fee_amount>
+            </sales_convert_order>
+        </fieldsets>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <minorderfee>
+                    <file>minorderfee.xml</file>
+                </minorderfee>
+            </updates>
+        </layout>
+    </adminhtml>
+    <default>
+        <sales>
+            <minimum_order>
+                <allow_with_fee>0</allow_with_fee>
+                <small_order_fee>5</small_order_fee>
+                <small_order_fee_label>Minimum Charge</small_order_fee_label>
+                <small_order_fee_exclusion_behavior>0</small_order_fee_exclusion_behavior>
+            </minimum_order>
+        </sales>
+    </default>
+</config>

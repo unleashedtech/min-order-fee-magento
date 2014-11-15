@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="UnleashedTech_MinOrderFee" default="build">
+    <!-- Build -->
+    <target name="build" depends="init,clean,lint,phpcs" />
+
+    <target name="init" depends="-setup-dirs,-setup-filesets" unless="project.initialised">
+        <property name="project.initialized" value="true" />
+    </target>
+
+    <target name="-setup-dirs">
+        <property name="base.dir"  value="." />
+        <property name="src.dir"   value="${base.dir}/src" />
+        <property name="build.dir" value="${base.dir}/build" />
+
+        <property name="build.logs.dir" value="${build.dir}/logs" />
+    </target>
+
+    <target name="-setup-filesets">
+        <patternset id="php">
+            <include name="**/*.php"/>
+        </patternset>
+        <fileset dir="${src.dir}" id="php.files">
+            <patternset refid="php"/>
+        </fileset>
+    </target>
+
+    <target name="clean" depends="init" unless="project.cleaned">
+        <!-- Remove previous build subdirectories, and recreate fresh versions -->
+        <echo message="Deleting build directories" level="debug"/>
+        <delete dir="${build.logs.dir}"/>
+
+        <echo message="Creating build directories" level="debug"/>
+        <mkdir dir="${build.logs.dir}"/>
+
+        <property name="project.cleaned" value="true"/>
+    </target>
+
+    <target name="lint" depends="init" description="Check files for syntax errors">
+        <phplint deprecatedAsError="true" haltOnFailure="true" cachefile="${build.logs.dir}/cachefile.txt">
+            <fileset refid="php.files" />
+        </phplint>
+    </target>
+
+    <!-- PHPCodeSniffer -->
+    <target name="phpcs" depends="init" description="Find coding standard violations using PHP_CodeSniffer and print human readable output.">
+        <phpcodesniffer standard="${base.dir}/phpcs.xml">
+            <fileset refid="php.files" />
+        </phpcodesniffer>
+    </target>
+</project>
+

@@ -1,7 +1,7 @@
 Minimum Order Fee
 =================
 
-This module allows store owners to charge customers a fee for small orders (below a given subtotal).
+This module allows store owners to charge customers a fee for small orders (below the minimum subtotal).
 
 Installation
 ------------
